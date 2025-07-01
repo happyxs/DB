@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REAGE DEBORAKK!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #d0e7f9;
+      color: #034078;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5em;
+      color: #0066cc;
+    }
+    #game {
+      margin-top: 30px;
+    }
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #3399ff;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #267acc;
+    }
+    #score {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+    #message {
+      margin-top: 40px;
+      font-size: 24px;
+      color: #005c99;
+      display: none;
+    }
+    img.stitch {
+      width: 150px;
+      margin-top: 20px;
+    }.heart {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  color: #3399ff;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <h1>REAGE DEBORAAKK!</h1>
+  <img src="https://static.wikia.nocookie.net/disney/images/1/16/Profile_-_Stitch.png" alt="Stitch" class="stitch">
+  <p>Clique nos corações o máximo que conseguir! 💙</p>
+  <div id="game">
+    <button onclick="clickHeart()">💙</button>
+    <div id="score">Pontos: 0</div>
+  </div>
+  <div id="message">
+    Você desbloqueou o encontro! 🎉<br>
+    Te espero no shopping sexta às 12h 😄💙
+  </div>  <script>
+    let pontos = 0;
+    const scoreDiv = document.getElementById('score');
+    const messageDiv = document.getElementById('message');
+
+    function clickHeart() {
+      pontos++;
+      scoreDiv.innerText = `Pontos: ${pontos}`;
+      if (pontos >= 15) {
+        document.getElementById('game').style.display = 'none';
+        messageDiv.style.display = 'block';
+      }
+    }
+
+    function createFallingHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '💙';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 10 + 20) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createFallingHeart, 300);
+  </script></body>
+</html>
